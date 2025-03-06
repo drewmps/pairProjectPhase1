@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <% if (deleted) { %>
+    <h2 style="color: red">Customer <%= deleted %> is deleted from database</h2>
+    <% } %> <% if (updated) { %>
+    <h2 style="color: red">
+      Customer <%= updated %>'s password has been updated
+    </h2>
+    <% } %>
+
+    <form action="/admin" method="get">
+      <input type="text" name="search" id="" />
+      <button type="submit">Search</button>
+    </form>
+    <% if (!users) { %>
+    <h2>There are currently no registered customers</h2>
+    <% } else { %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        <th>Action</th>
+      </tr>
+
+      <% users.forEach(user => { %>
+      <tr>
+        <td><%= user.Profile.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.getRegistrationDate %></td>
+        <td>
+          <a href="/admin/edit/<%= user.id %>">Edit password</a>
+          <a href="/admin/delete/<%= user.id %>">Delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <%}%>
+
+    <a href="/logout">Log out</a>
+  </body>
+</html>

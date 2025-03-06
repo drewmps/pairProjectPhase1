@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/logout">Log out</a>
+    <h1>Hello <%= user.Profile.name %></h1>
+    <% if (result === "Covid") { %>
+    <h3>We're sorry to inform you that you might have Covid</h3>
+    <% } %> <% if (result === "Not Covid") { %>
+    <h3>We're thrilled to inform you that you don't have Covid</h3>
+    <% } %>
+    <a href="/">Back to home</a>
+  </body>
+</html>

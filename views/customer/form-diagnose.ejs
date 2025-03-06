@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/diagnose" method="post">
+      <div>
+        <div>
+          <label for="">Do you have a fever?</label>
+        </div>
+        <label for="">Yes</label>
+        <input type="radio" name="fever" value="1" />
+        <label for="">No</label>
+        <input type="radio" name="fever" value="" />
+      </div>
+
+      <div>
+        <div>
+          <label for="">Have you been coughing a lot recently?</label>
+        </div>
+        <label for="">Yes</label>
+        <input type="radio" name="cough" value="2" />
+        <label for="">No</label>
+        <input type="radio" name="cough" value="" />
+      </div>
+
+      <div>
+        <div>
+          <label for="">Are you having trouble breathing?</label>
+        </div>
+        <label for="">Yes</label>
+        <input type="radio" name="shortBreath" value="4" />
+        <label for="">No</label>
+        <input type="radio" name="shortBreath" value="" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

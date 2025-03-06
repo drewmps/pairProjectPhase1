@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Demam"
+  },
+  {
+    "id": 2,
+    "name": "Batuk"
+  },
+  {
+    "id": 3,
+    "name": "No Symptom"
+  },
+  {
+    "id": 4,
+    "name": "Nafas Pendek"
+  }
+]
