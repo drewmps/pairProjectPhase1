@@ -4,15 +4,148 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f5f6fa;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+      }
+
+      .logout-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #eb5757;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .logout-btn:hover {
+        background-color: #d84343;
+      }
+
+      .completion-card {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+        margin-top: 80px;
+      }
+
+      .completion-icon {
+        width: 80px;
+        height: 80px;
+        background-color: #2d9cdb;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+      }
+
+      .completion-icon i {
+        color: white;
+        font-size: 32px;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 16px;
+        font-size: 28px;
+      }
+
+      .info-text {
+        color: #828282;
+        line-height: 1.6;
+        margin-bottom: 32px;
+      }
+
+      .next-steps {
+        background-color: #f8f9fb;
+        border-radius: 12px;
+        padding: 24px;
+        margin-top: 32px;
+      }
+
+      .home-button {
+        background-color: #2d9cdb;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+        margin-top: 24px;
+      }
+
+      .home-button:hover {
+        background-color: #268ec7;
+        transform: translateY(-2px);
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <a href="/logout">Log out</a>
-    <h1>Hello <%= user.Profile.name %></h1>
-    <% if (result === "Covid") { %>
-    <h3>We're sorry to inform you that you might have Covid</h3>
-    <% } %> <% if (result === "Not Covid") { %>
-    <h3>We're thrilled to inform you that you don't have Covid</h3>
-    <% } %>
-    <a href="/">Back to home</a>
+    <a href="/logout" class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i>
+      Log Out
+    </a>
+
+    <div class="completion-card">
+      <div class="completion-icon">
+        <i class="fas fa-check"></i>
+      </div>
+
+      <h1>Consultation Completed</h1>
+
+      <% if (result === "Covid") { %>
+      <h3>We're sorry to inform you that you might have Covid</h3>
+      <% } %> <% if (result === "Not Covid") { %>
+      <h3>We're thrilled to inform you that you don't have Covid</h3>
+      <% } %>
+      <a href="/">Back to home</a>
+
+      <p class="info-text">
+        Thank you for using HaloBro. Your consultation session has been
+        successfully completed.<br />
+        Your medical records have been securely saved.
+      </p>
+
+      <div class="next-steps">
+        <p style="color: #828282; margin-bottom: 16px">
+          <i class="fas fa-info-circle" style="margin-right: 8px"></i>
+          Next Steps:
+        </p>
+        <p style="color: #333">
+          1. Prescription sent to your email<br />
+          2. Follow-up reminder in 3 days<br />
+          3. Access your health summary anytime
+        </p>
+      </div>
+    </div>
   </body>
 </html>

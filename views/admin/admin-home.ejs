@@ -5,51 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      table,
-      th,
-      td {
-        border: 1px solid black;
+      * {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f5f6fa;
+        padding: 40px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+      }
+
+      .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+
+      .notification {
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .notification-success {
+        background-color: #e3f5ef;
+        color: #219653;
+      }
+
+      .notification-error {
+        background-color: #ffe3e3;
+        color: #eb5757;
+      }
+
+      .search-form {
+        position: relative;
+        width: 300px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 12px 16px 12px 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #828282;
+      }
+
+      .patients-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 24px;
+      }
+
+      .patients-table th,
+      .patients-table td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .patients-table th {
+        background-color: #f8f9fb;
+        color: #828282;
+        font-weight: 500;
+      }
+
+      .patients-table tr:hover {
+        background-color: #f8f9fb;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 12px;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-edit {
+        background-color: #2d9cdb;
+        color: white;
+      }
+
+      .btn-delete {
+        background-color: #eb5757;
+        color: white;
+      }
+
+      .btn-logout {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #eb5757;
+        padding: 10px 20px;
+      }
+
+      .no-patients {
+        text-align: center;
+        padding: 40px;
+        color: #828282;
       }
     </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <% if (deleted) { %>
-    <h2 style="color: red">Customer <%= deleted %> is deleted from database</h2>
-    <% } %> <% if (updated) { %>
-    <h2 style="color: red">
-      Customer <%= updated %>'s password has been updated
-    </h2>
-    <% } %>
+    <div class="container">
+      <!-- Notifications -->
+      <% if (deleted) { %>
+      <div class="notification notification-success">
+        <i class="fas fa-check-circle"></i>
+        Customer <%= deleted %> is deleted from database
+      </div>
+      <% } %> <% if (updated) { %>
+      <div class="notification notification-success">
+        <i class="fas fa-check-circle"></i>
+        Customers <%= updated %>'s password has been updated
+      </div>
+      <% } %>
 
-    <form action="/admin" method="get">
-      <input type="text" name="search" id="" />
-      <button type="submit">Search</button>
-    </form>
-    <% if (!users) { %>
-    <h2>There are currently no registered customers</h2>
-    <% } else { %>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Registration Date</th>
-        <th>Action</th>
-      </tr>
+      <div class="header-section">
+        <h1>Customer Management</h1>
+        <form class="search-form" action="/admin" method="get">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            name="search"
+            class="search-input"
+            placeholder="Search patients..."
+          />
+        </form>
+      </div>
 
-      <% users.forEach(user => { %>
-      <tr>
-        <td><%= user.Profile.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.getRegistrationDate %></td>
-        <td>
-          <a href="/admin/edit/<%= user.id %>">Edit password</a>
-          <a href="/admin/delete/<%= user.id %>">Delete</a>
-        </td>
-      </tr>
-      <% }) %>
-    </table>
-    <%}%>
+      <% if (!users) { %>
+      <div class="no-patients">
+        <i class="fas fa-user-slash fa-2x" style="margin-bottom: 16px"></i>
+        <h2>There are currently no registered customers</h2>
+      </div>
+      <% } else { %>
+      <table class="patients-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Registration Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.Profile.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.getRegistrationDate %></td>
+            <td>
+              <div class="action-buttons">
+                <a href="/admin/edit/<%= user.id %>" class="btn btn-edit">
+                  <i class="fas fa-key"></i> Edit password
+                </a>
+                <a href="/admin/delete/<%= user.id %>" class="btn btn-delete">
+                  <i class="fas fa-trash-alt"></i> Delete
+                </a>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
 
-    <a href="/logout">Log out</a>
+    <a href="/logout" class="btn btn-logout">
+      <i class="fas fa-sign-out-alt"></i> Log Out
+    </a>
   </body>
 </html>

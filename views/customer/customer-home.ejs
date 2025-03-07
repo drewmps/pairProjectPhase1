@@ -4,14 +4,115 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f5f6fa;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .logout-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #eb5757;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .logout-btn:hover {
+        background-color: #d84343;
+      }
+
+      .diagnosis-card {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .diagnosis-btn {
+        background-color: #2d9cdb;
+        color: white;
+        padding: 16px 32px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: transform 0.3s ease;
+      }
+
+      .diagnosis-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .error-notification {
+        background-color: #ffe3e3;
+        color: #eb5757;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div>
-      <a href="/logout">Log out</a>
+    <a href="/logout" class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i>
+      Log Out
+    </a>
+
+    <div class="container">
+      <% if (error) { %>
+      <div class="error-notification">
+        <i class="fas fa-exclamation-circle"></i>
+        <div>
+          <% error.split(",").forEach(err => { %>
+          <p><%= err %></p>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
+
+      <div class="diagnosis-card">
+        <h1 style="margin-bottom: 24px; color: #333">Medical Diagnosis</h1>
+        <p style="color: #666; margin-bottom: 32px">
+          Scan QR code to begin your health assessment
+        </p>
+        <a href="/qr" class="diagnosis-btn">
+          <i class="fas fa-qrcode"></i>
+          Begin Diagnosis
+        </a>
+      </div>
     </div>
-    <% if (error) { %> <% error.split(",").forEach(err => { %>
-    <p style="color: red"><%= err %></p>
-    <% }) %> <% } %>
-    <a href="/qr">Begin diagnosis</a>
   </body>
 </html>

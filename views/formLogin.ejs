@@ -4,25 +4,174 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f5f6fa;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-container {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .logo {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .logo h1 {
+        color: #2d9cdb;
+        font-size: 28px;
+      }
+
+      .notification {
+        background-color: #ffe3e3;
+        color: #eb5757;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        padding-left: 40px;
+      }
+
+      .input-field:focus {
+        outline: none;
+        border-color: #2d9cdb;
+        box-shadow: 0 0 0 2px rgba(45, 156, 219, 0.1);
+      }
+
+      .input-icon {
+        position: relative;
+      }
+
+      .input-icon i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #828282;
+      }
+
+      .submit-btn {
+        width: 100%;
+        background-color: #2d9cdb;
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: #268ec7;
+      }
+
+      .register-link {
+        text-align: center;
+        margin-top: 24px;
+        color: #828282;
+      }
+
+      .register-link a {
+        color: #2d9cdb;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .forgot-password {
+        text-align: right;
+        margin-bottom: 24px;
+      }
+
+      .forgot-password a {
+        color: #2d9cdb;
+        text-decoration: none;
+        font-size: 14px;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Login</h1>
-    <% if (error) { %> <% error.split(",").forEach(err => { %>
-    <p style="color: red"><%= err %></p>
-    <% }) %> <% } %>
-    <form action="/login" method="post">
-      <div>
-        <label for="">Email</label>
-        <input type="text" name="email" />
+    <div class="login-container">
+      <div class="logo">
+        <h1><i class="fas fa-hospital"></i> HaloBro</h1>
       </div>
 
-      <div>
-        <label for="">Password</label>
-        <input type="password" name="password" id="" />
+      <% if (error) { %>
+      <div class="notification">
+        <% error.split(",").forEach(err => { %>
+        <p><%= err %></p>
+        <% }) %>
       </div>
-      <button type="submit">Login</button>
-    </form>
+      <% } %>
 
-    <div>Don't have an account? <a href="/register">Register</a></div>
+      <form action="/login" method="post">
+        <div class="form-group input-icon">
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            name="email"
+            class="input-field"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div class="form-group input-icon">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            name="password"
+            class="input-field"
+            placeholder="Enter your password"
+          />
+        </div>
+
+        <button type="submit" class="submit-btn">Sign In</button>
+      </form>
+
+      <div class="register-link">
+        Don't have an account? <a href="/register">Create account</a>
+      </div>
+    </div>
   </body>
 </html>

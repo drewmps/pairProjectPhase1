@@ -4,39 +4,178 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f5f6fa;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .diagnosis-form {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .form-title {
+        color: #2d9cdb;
+        margin-bottom: 32px;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      .question-group {
+        margin-bottom: 32px;
+      }
+
+      .question-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #333;
+        font-weight: 500;
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+
+      .radio-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .radio-option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #f8f9fb;
+      }
+
+      .radio-option:hover {
+        border-color: #2d9cdb;
+        background: #e3f5ef;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      input[type="radio"]:checked + .radio-option {
+        border-color: #2d9cdb;
+        background: #2d9cdb;
+        color: white;
+      }
+      .previous-link,
+      .submit-btn {
+        width: 20%;
+        padding: 16px;
+        background: #2d9cdb;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 24px;
+      }
+      .previous-link:hover,
+      .submit-btn:hover {
+        background: #268ec7;
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <form action="/diagnose" method="post">
-      <div>
-        <div>
-          <label for="">Do you have a fever?</label>
+    <form class="diagnosis-form" action="/diagnose" method="post">
+      <h1 class="form-title"><i class="fas fa-stethoscope"></i> Document</h1>
+
+      <div class="question-group">
+        <div class="question-label">
+          <i class="fas fa-thermometer-half icon"></i>
+          <span>Do you have a fever?</span>
         </div>
-        <label for="">Yes</label>
-        <input type="radio" name="fever" value="1" />
-        <label for="">No</label>
-        <input type="radio" name="fever" value="" />
+        <div class="radio-container">
+          <label>
+            <input type="radio" name="fever" value="1" />
+            <div class="radio-option">Yes</div>
+          </label>
+          <label>
+            <input type="radio" name="fever" value="" />
+            <div class="radio-option">No</div>
+          </label>
+        </div>
       </div>
 
-      <div>
-        <div>
-          <label for="">Have you been coughing a lot recently?</label>
+      <div class="question-group">
+        <div class="question-label">
+          <i class="fas fa-lungs icon"></i>
+          <span>Have you been coughing a lot recently?</span>
         </div>
-        <label for="">Yes</label>
-        <input type="radio" name="cough" value="2" />
-        <label for="">No</label>
-        <input type="radio" name="cough" value="" />
+        <div class="radio-container">
+          <label>
+            <input type="radio" name="cough" value="2" />
+            <div class="radio-option">Yes</div>
+          </label>
+          <label>
+            <input type="radio" name="cough" value="" />
+            <div class="radio-option">No</div>
+          </label>
+        </div>
       </div>
 
-      <div>
-        <div>
-          <label for="">Are you having trouble breathing?</label>
+      <div class="question-group">
+        <div class="question-label">
+          <i class="fas fa-wind icon"></i>
+          <span>Are you having trouble breathing?</span>
         </div>
-        <label for="">Yes</label>
-        <input type="radio" name="shortBreath" value="4" />
-        <label for="">No</label>
-        <input type="radio" name="shortBreath" value="" />
+        <div class="radio-container">
+          <label>
+            <input type="radio" name="shortBreath" value="4" />
+            <div class="radio-option">Yes</div>
+          </label>
+          <label>
+            <input type="radio" name="shortBreath" value="" />
+            <div class="radio-option">No</div>
+          </label>
+        </div>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="submit-btn">Submit</button>
+      <a href="/qr-customer" class="previous-link">Previous</a>
     </form>
   </body>
 </html>

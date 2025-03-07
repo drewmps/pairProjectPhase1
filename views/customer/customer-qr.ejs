@@ -4,10 +4,107 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f5f6fa;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+      }
+
+      .payment-container {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+        margin-top: 40px;
+      }
+
+      .payment-header {
+        margin-bottom: 32px;
+      }
+
+      .payment-header h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .qr-container {
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 12px;
+        margin: 24px 0;
+        display: inline-block;
+        border: 1px solid #e0e0e0;
+      }
+
+      .qr-image {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+      }
+
+      .next-button {
+        background-color: #2d9cdb;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+        margin-top: 24px;
+      }
+
+      .next-button:hover {
+        background-color: #268ec7;
+        transform: translateY(-2px);
+      }
+
+      .instructions {
+        color: #828282;
+        font-size: 14px;
+        margin: 20px 0;
+        line-height: 1.6;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Scan this qr to read more about covid 19</h1>
-    <img src="<%= qr %>" alt="No image" />
-    <a href="/diagnose">Next</a>
+    <div class="payment-container">
+      <div class="payment-header">
+        <i
+          class="fas fa-qrcode"
+          style="font-size: 32px; color: #2d9cdb; margin-bottom: 16px"
+        ></i>
+        <h1>More about qr</h1>
+        <p class="instructions">Scan this qr to read more about covid 19</p>
+      </div>
+
+      <div class="qr-container">
+        <img src="<%= qr %>" alt="Payment QR Code" class="qr-image" />
+      </div>
+
+      <a href="/diagnose" class="next-button"> Continue to Diagnosis </a>
+      <a href="/home" class="next-button"> Previous </a>
+    </div>
   </body>
 </html>

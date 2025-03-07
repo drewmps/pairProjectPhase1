@@ -4,16 +4,119 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f5f6fa;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+        margin-top: 40px;
+      }
+
+      .header {
+        margin-bottom: 32px;
+      }
+
+      .header h1 {
+        color: #2d9cdb;
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+
+      .doctor-image {
+        width: 200px;
+        margin: 0 auto 24px;
+      }
+
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .auth-button {
+        background-color: #2d9cdb;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .auth-button:hover {
+        background-color: #268ec7;
+        transform: translateY(-2px);
+      }
+
+      .nav-links {
+        margin-top: 24px;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        color: #2d9cdb;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Do you have covid-19?</h1>
+    <div class="container">
+      <div class="header">
+        <h1><i class="fas fa-virus"></i> COVID-19 Self Assessment</h1>
+        <img
+          src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=200"
+          alt="Medical Illustration"
+          class="doctor-image"
+        />
+        <p style="color: #666; line-height: 1.6">
+          Please log in or register to begin your COVID-19 symptom
+          assessment.<br />
+          Your health information will be kept secure and confidential.
+        </p>
+      </div>
 
-    <div>
-      <a href="/login">Log in</a>
-    </div>
+      <div class="button-group">
+        <a href="/login" class="auth-button">
+          <i class="fas fa-sign-in-alt"></i>
+          Sign In to Continue
+        </a>
 
-    <div>
-      <a href="/register">Register</a>
-    </div>
+        <a href="/register" class="auth-button">
+          <i class="fas fa-user-plus"></i>
+          Create New Account
+        </a>
+      </div>
   </body>
 </html>
