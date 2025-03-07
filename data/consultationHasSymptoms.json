@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "SymptomId": 1,
+    "ConsultationId": 2
+  },
+  {
+    "id": 2,
+    "SymptomId": 2,
+    "ConsultationId": 2
+  }
+]

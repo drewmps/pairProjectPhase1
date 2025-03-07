@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <% if (error) { %> <% error.split(",").forEach(err => { %>
+    <p style="color: red"><%= err %></p>
+    <% }) %> <% } %>
+    <form action="/login" method="post">
+      <div>
+        <label for="">Email</label>
+        <input type="text" name="email" />
+      </div>
+
+      <div>
+        <label for="">Password</label>
+        <input type="password" name="password" id="" />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <div>Don't have an account? <a href="/register">Register</a></div>
+  </body>
+</html>
