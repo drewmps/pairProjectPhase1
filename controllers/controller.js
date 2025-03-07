@@ -124,7 +124,7 @@ class Controller {
     res.redirect("/qr-customer");
   }
   static renderQr(req, res) {
-    qr.toDataURL("tes", (err, src) => {
+    qr.toDataURL("https://en.wikipedia.org/wiki/COVID-19", (err, src) => {
       res.render("customer/customer-qr", {
         qr: src,
       });
